@@ -1,6 +1,8 @@
 package com.github.hero.utils;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * User: benjamin.wuhaixu
@@ -19,13 +21,25 @@ public class Utils {
         int[] rank = new int[floats.length];
         float[] f = Arrays.copyOf(floats, floats.length);
         Arrays.sort(f);
+        List<Integer> usedIndex = new ArrayList<>(floats.length);
         for (int i = 0; i < floats.length; i++) {
             for (int j = 0; j < floats.length; j++) {
-                if (f[i] == floats[j]) {
+                if (f[i] == floats[j] && !usedIndex.contains(j)) {
+                    usedIndex.add(j);
                     rank[i] = j;
+                    break;
                 }
             }
         }
         return rank;
+    }
+
+    public static void main(String[] args) {
+        float[] f = new float[3];
+        f[0] = 1.1f;
+        f[1] = 3.1f;
+        f[2] = 2.1f;
+        int[] rank = rank(f);
+        System.out.println(Arrays.toString(rank));
     }
 }

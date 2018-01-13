@@ -20,3 +20,7 @@
 * 7、选择pmi值最高的为答案（该公式来自：[https://en.wikipedia.org/wiki/Pointwise_mutual_information](https://en.wikipedia.org/wiki/Pointwise_mutual_information)）
 
 > 注：因算法识别率目前只有70%，还在进一步研究算法
+
+## 3、相关工具
+* mac截图可以使用苹果自带截图工具，默认快捷键为：shift+command+4
+* windows可以使用screenshoter：[http://www.inspire-soft.net/software/screenshoter](http://www.inspire-soft.net/software/screenshoter)，设置Destination为Run.DEFAULT_IMAGE路径。
