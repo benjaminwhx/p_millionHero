@@ -1,5 +1,7 @@
 package com.github.hero.search;
 
+import com.github.hero.utils.Utils;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -52,16 +54,32 @@ public class BaiDuSearch implements Search {
     }
 
     @Override
+    public Long searchFirstPageCount(String keyword) throws IOException {
+        int page = 1;
+        int pageSize = 100;
+        URL url = new URL("http://www.baidu.com/s?tn=ichuner&lm=-1&word=" + question + "&rn=100");
+        BufferedReader br = new BufferedReader(new InputStreamReader(url.openStream(),"UTF-8"));
+        long keywordCount = 0;
+        String line;
+        while ((line = br.readLine()) != null) {
+            System.out.println(line);
+            keywordCount += Utils.getKeywordCount(line, keyword);
+        }
+        return keywordCount;
+    }
+
+    @Override
     public Object call() throws Exception {
         return search();
     }
 
     public static void main(String[] args) throws IOException {
-        Search search = new BaiDuSearch("泰国");
-        Search search1 = new BaiDuSearch("泰国");
-        Search search2 = new BaiDuSearch("泰国");
-        System.out.println(search.search());
-        System.out.println(search1.search());
-        System.out.println(search2.search());
+        Search search = new BaiDuSearch("北京处于下列哪一大陆板块?");
+        Long a = search.searchFirstPageCount("亚欧板块");
+        Long b = search.searchFirstPageCount("南极洲板块");
+        Long c = search.searchFirstPageCount("非洲板块");
+        System.out.println(a);
+        System.out.println(b);
+        System.out.println(c);
     }
 }

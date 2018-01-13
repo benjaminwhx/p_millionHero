@@ -34,6 +34,11 @@ public class Utils {
         return rank;
     }
 
+    public static long getKeywordCount(String line, String keyword) {
+        int i = line.length() - line.replace(keyword, "").length();
+        return i / keyword.length();
+    }
+
     public static void main(String[] args) {
         float[] f = new float[3];
         f[0] = 1.1f;
@@ -41,5 +46,9 @@ public class Utils {
         f[2] = 2.1f;
         int[] rank = rank(f);
         System.out.println(Arrays.toString(rank));
+        String string = "javajava_eclipse_class_jajavavajavajdjdj";
+        String str = "java";
+        long keywordCount = getKeywordCount(string, str);
+        System.out.println(keywordCount);
     }
 }

@@ -10,5 +10,17 @@ import java.util.concurrent.Callable;
  */
 public interface Search extends Callable {
 
+    /**
+     * 搜索关键字得到相关结果个数
+     * @return
+     * @throws IOException
+     */
     Long search() throws IOException;
+
+    /**
+     * 搜索第一页中keyword的出现个数
+     * @param keyword
+     * @return
+     */
+    Long searchFirstPageCount(String keyword) throws IOException;
 }
