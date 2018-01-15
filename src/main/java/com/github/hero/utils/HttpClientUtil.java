@@ -46,8 +46,8 @@ public class HttpClientUtil {
 	private static final Logger LOGGER = LoggerFactory.getLogger(HttpClientUtil.class);
 
 	private static final int CONNECTION_REQUEST_TIMEOUT = 5 * 1000;
-	private static final int CONNECT_TIMEOUT = 5 * 1000;
-	private static final int SOCKET_TIMEOUT = 10 * 1000;
+	private static final int CONNECT_TIMEOUT = 20 * 1000;
+	private static final int SOCKET_TIMEOUT = 20 * 1000;
 
 	private static CloseableHttpClient httpClient = null;
 	// lock
