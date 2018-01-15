@@ -24,6 +24,10 @@ public class StringUtils {
         return str == null || str.length() == 0;
     }
 
+    public static boolean isNotEmpty(String str) {
+        return !isEmpty(str);
+    }
+
     public static Information getInformationByOCR(String ocrResult) {
         Information information = new Information();
         JSONObject jsonObject = JSONUtils.fromObject(ocrResult);
